@@ -3,7 +3,7 @@ module Mongoid
     module Roleable
       def self.included(base)
         base.class_eval do |klass|
-          klass.field :roles, :type => Array
+          klass.field :roles, :type => Array, default: ->{[]}
           klass.index({ roles: 1 }, { background: true })
 
           include InstanceMethods
